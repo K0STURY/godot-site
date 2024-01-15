@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://bdd77xj8uh3yo"]
+
+[ext_resource type="Material" uid="uid://dnwwiaylpqspo" path="res://Scenes/ScrollMat.tres" id="1_5oe5t"]
+[ext_resource type="Texture2D" uid="uid://t3k4ewxqgsx5" path="res://Art/gridbox.png" id="1_mktlp"]
+[ext_resource type="Texture2D" uid="uid://dj75j2eqmxgtb" path="res://Art/TopStripe.png" id="2_qpgd2"]
+[ext_resource type="Texture2D" uid="uid://byg23ojy16fye" path="res://Art/BottomStripe.png" id="3_qgi80"]
+
+[sub_resource type="Shader" id="Shader_kocnt"]
+code = "shader_type canvas_item;
+
+uniform vec2 scrollDireciton = vec2(1.0, 0.0);
+void fragment() {
+	vec2 scroll_uv = UV + (TIME * scrollDireciton);
+	COLOR = texture(TEXTURE, scroll_uv);
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qhpqk"]
+shader = SubResource("Shader_kocnt")
+shader_parameter/scrollDireciton = Vector2(0.1, 0.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hmfnk"]
+shader = SubResource("Shader_kocnt")
+shader_parameter/scrollDireciton = Vector2(-0.1, 0)
+
+[node name="Test" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_qhpqk")
+clip_contents = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_mktlp")
+
+[node name="TopBar" type="TextureRect" parent="CanvasLayer"]
+texture_repeat = 2
+material = ExtResource("1_5oe5t")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qpgd2")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="BottomBar" type="TextureRect" parent="CanvasLayer"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_hmfnk")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qgi80")
+expand_mode = 3
+stretch_mode = 4

@@ -13,4 +13,4 @@ void fragment() {
 
 [resource]
 shader = SubResource("Shader_kocnt")
-shader_parameter/scrollDireciton = Vector2(0.25, 0)
+shader_parameter/scrollDireciton = Vector2(0.1, 0)
