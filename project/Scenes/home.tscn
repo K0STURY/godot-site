@@ -62,7 +62,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 250, 10)
 
 [node name="Me" type="Node2D" parent="."]
-position = Vector2(96, 464)
+position = Vector2(1136, 456)
 scale = Vector2(0.75, 0.75)
 
 [node name="Avatar" type="Sprite2D" parent="Me"]
