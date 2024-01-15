@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dnwwiaylpqspo"]
+
+[sub_resource type="Shader" id="Shader_kocnt"]
+code = "shader_type canvas_item;
+
+uniform vec2 scrollDireciton = vec2(1.0, 0.0);
+void fragment() {
+	vec2 scroll_uv = UV + (TIME * scrollDireciton);
+	COLOR = texture(TEXTURE, scroll_uv);
+}
+
+"
+
+[resource]
+shader = SubResource("Shader_kocnt")
+shader_parameter/scrollDireciton = Vector2(0.25, 0)
