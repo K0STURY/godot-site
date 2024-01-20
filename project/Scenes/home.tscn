@@ -30,6 +30,15 @@ shader_parameter/scrollDireciton = Vector2(-0.25, 0)
 
 [node name="Root" type="Node2D"]
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+metadata/_edit_use_anchors_ = true
+
 [node name="Grid" type="Sprite2D" parent="."]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_gtt4p")
